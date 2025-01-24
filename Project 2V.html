@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f8ff;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            width: 100vw; /* Full screen width */
+            height: 100vh; /* Full screen height */
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('letter2.jpg'); /* Replace with your letter image */
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+
+        .text {
+            position: absolute;
+            top: 50px; /* Adjust vertical position */
+            left: 50px; /* Adjust horizontal position */
+            color: black
+            font-family: 'Trebuchet MS', Arial, sans-serif;
+            font-size: 20px;
+            line-height: 1.6; /* Adjust spacing between lines */
+            z-index: 2; /* Ensure text appears above the background */
+            white-space: pre-wrap; /* Preserve spaces and line breaks */
+            overflow: hidden;
+            max-width: calc(100% - 100px); /* Prevent overflow from the edges */
+            max-height: calc(100% - 100px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="background"></div>
+        <div class="text" id="animatedText"></div>
+    </div>
+
+    <script>
+        const textElement = document.getElementById('animatedText');
+
+        // Your letter content here
+        const letterContent = `
+Dear Nani gaadu, 
+Haappiieee happiieeee happieee bday ra. Ee year nuvvu full happy ga undi nuvvu cheyyalsinavi anni manifest cheyyal ani korukuntunna.
+You are my beatiful, hot, erripuk person. I dont wanna lose you. EVER.
+
+I may have done somethings that made you mad but I will change and I'm changing.
+I'll be a better person for myself and for you. 
+
+I Love you so much. My love for you will never change <3 
+
+
+With all my love,
+[Reverie]
+
+PS: Muuuuuuuuuaaaaaaaaaaaaaahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+        `;
+
+        let currentChar = 0;
+
+        function typeLetter() {
+            if (currentChar < letterContent.length) {
+                textElement.textContent += letterContent[currentChar];
+                currentChar++;
+                setTimeout(typeLetter, 50); // Adjust typing speed
+            }
+        }
+
+        typeLetter();
+    </script>
+</body>
+</html>
+
